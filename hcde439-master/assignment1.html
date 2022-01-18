@@ -14,11 +14,48 @@
         <div class="header">
             <h1>Michelle's Assignment 1!</h1>
             <p>
-            <!-- <img src="red-panda.jpg" width=400></a> -->
+                This is what my circuit set up looked like. I wanted to make it as clean as possible so that I wouldn't get confused with all of the wires mixed up. 
+            <img src="ass1-circuit.jpg" width=400></a>
             </p>
             <p>
-            Here is all the documentation for assignment 1!
+                And this is what it looked like in my schematic drawing:
+                <br><img src="ass1_schem.jpg" width=400></a> </br>
+                I used the same resistors, 220 Ohm, across each LED and ensured that the resistance was larger than the minimum amount. 
             </p>
+            <p>
+                I wanted to make it blink to the rhythm of the first 6 notes of "Doe a Deer" from the Sound of Music! 
+                <br><img src="ass1.gif" width=400></a> </br>
+                I had it set up in that way using an Array and a For loop. The Arduino code is below:
+            </p>
+            <pre>
+            <code>
+        //stored pin numbers within variables so that it's easier to remember which color is corresponded to which pin number
+        int blue = 12;
+        int yellow = 11;
+        int red = 13; 
+
+        // the pattern in the Array below is meant to imitate the first 6 notes of "Doe a Deer" from the Sound of Musical
+        int melody[] =  {
+        blue, yellow, red, blue, red, blue, red 
+        };
+        int size = 6;
+        int time = 500; // delay for 0.5 seconds for each LED to stay lit up     
+
+        void setup() {
+            pinMode(blue, OUTPUT); // initializing the Blue LED as an output
+            pinMode(yellow, OUTPUT); //initializing the Yellow LED as an output
+            pinMode(red, OUTPUT); // initializing the Red LED as an output 
+            }
+
+        void loop() {
+            for (int i = 0; i <= size; i++) {
+                digitalWrite(melody[i], HIGH); // turn the LED on by making the voltage HIGH
+                delay(time); // waiting for set period of milliseconds
+                digitalWrite(melody[i], LOW);  // turn off the LED by making the voltage LOW
+            }
+        }
+            </code>
+            </pre>
         </div>
         
     </body>
