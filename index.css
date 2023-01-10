@@ -25,6 +25,12 @@ body {
   aspect-ratio: 1;
 }
 
+.large-picture {
+  width: 650px;
+  cursor: pointer;
+  object-fit: cover;
+}
+
 .image-title {
   text-align: center;
 }
@@ -33,6 +39,7 @@ body {
   background-color: #a3b18a;
   color: #F8F6E7;
   border-radius: 4px;
+  transition: all 0.5s ease-out;
 }
 
 a:link {
@@ -64,5 +71,5 @@ a:visited {
 }
 
 p {
-  margin: 2px;
+  margin: 4px;
 }
