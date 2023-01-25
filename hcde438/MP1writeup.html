@@ -21,40 +21,55 @@
         to create a little notes extension. At this point, I figured that the basic functionality I
         needed would just be the ability to jot down notes without having to open a notes app.
         <br>
-        <!-- <br><img
-        class="large-picture"
-        src="/photos/MP0-writeup.png"
-        /> -->
       </p>
-      <h2>Issue</h2>
-      <p>Setting up the extension HTML and getting to appear in my browser was actually very easy. Because of this,
-        I definitely underestimated how long the rest of the task would take -- at this barebone code, I was not
-        able to store the text that I inputted whenever the extension was closed.
-        I had an issue finding where the text was being stored and how to access that text to store it into
-        Chrome's storage system.
-      </p>
-      <!-- <h2>CSS Transition</h2>
-      <p>I chose to do a very simple CSS transition - just making a hyperlink ease out into a different color when a mouse
-        hovers over it.
-        <br> I wanted to make something super simple and minimalistic that would show that it was clickable, while adding a slight transition to it.
-        <br>
+      <h2>Process and Issues</h2>
+      <p>Setting up the extension HTML and getting to appear in my browser was actually pretty easy. First, I took the example given to us
+        (the background color extension) and worked off of that to create my file structure and all necessary components
+        manifest.json, icon.png, popup files, and content.js). One small problem that I had initially was when I uploaded my file into
+        chrome, it uploaded but would not display anything when I clicked it. I realized shortly after that I had copied over the manifest.json file
+        but forgot to rename the popup.html file properly. This reminded me that I need to be careful in copying over files that I use as a starter.
         <br><img
         class="large-picture"
-        src="/video-documentation/MP0-transition.gif"
+        src="/MP1/notes-extension/photos/M1-notfound.png"
         />
-      </p> -->
+        <br>
+        After I got the initial functionality of having an extension with a text box where you could write in, my next issue was in
+        storing the text. Every time I closed the extension, the text would be lost. At this point, I knew that I needed to store the information
+        using chrome.storage but had a hard time understanding how to access that text using the html file that I had. I also had trouble understanding
+        the correct syntax to use and what to reference. As a result, I kept getting "object object" when I would try to type something and
+        then reopen the extension.
+        <br><img
+        class="large-picture"
+        src="/MP1/notes-extension/photos/M1-objectob.png"
+        />
+        <br>
+        After getting help from Hannah and being directed to chrome.storage's developer documentation, I shifted my syntax into a .then chain, and also
+        realized that I was accessing and storing the object of the text, not the actual text value. This was fixed when I added .value to my document.getElementById call.
+        All throughout the process, using the error messages in the chrome extension page as well as using the inspect tool on chrome were extremely helpful in finding
+        where my errors were.
+       <br> Here is a demonstration of the final extension working!
+       <br><img
+       class="large-picture"
+       src="/MP1/notes-extension/photos/M1-final.gif"
+       />
+      <br>
       <h2>Ideas & Future</h2>
-      <p> I have a few ideas of what I want to do to this site!
-        <li>
-          <ul>Make everything look aesthetically MUCH much better - better margins and spacing between everything, more graphics, etc</ul>
-        </li>
-        <li>
-          <ul>Make the header throughout the entire site</ul>
-        </li>
-        <li>
-          <ul>Add more fun CSS transitions and animations throughout the site </ul>
-        </li>
-        <li><ul>Some sort of user interaction</ul></li>
+      <p> For the future, I would want to make this note extension look better aesthetically, and add functionality where you could maybe have the extension be floating
+      </p>
+      <h2>Kudos</h2>
+      <p> <li>
+        <ul>Chrome Storage Site: https://developer.chrome.com/docs/extensions/reference/storage/#usage</ul>
+        <p> Specifically, I used this code snippet: </p>
+        <pre>
+          <code>
+            chrome.storage.local.get(["key"]).then((result) => {
+              console.log("Value currently is " + result.key);
+            });
+          </code>
+        </pre>
+        <ul> Hannah! </ul>
+        <ul> Mackenzie- we had similar projects so she helped me out a little bit too! </ul>
+      </li>
       </p>
     </div>
   </body>
