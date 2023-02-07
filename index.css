@@ -77,3 +77,9 @@ a:visited {
 p {
   margin: 4px;
 }
+
+#gallery {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+}

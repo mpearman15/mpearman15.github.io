@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <title>Liney lines</title>
+    <style>
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+    <script>
+      let colors = ["#EBA048", "#5AB3DC", "#E16540", "#B2D6BC", "#E378AA", "#CFC37D", "#C1A939", "#FF9900", "#FFCCCC", "#FDC500", "#FFD60A"];
+
+      let mic;
+      let volLog = [];
+      let vol;
+      let color1;
+      let color2;
+
+      function setup() {
+        createCanvas(windowWidth, windowHeight);
+        xOff = 50;
+        mic = new p5.AudioIn();
+        mic.start();
+        color1 = colors[floor(random(colors.length))];
+        color2 = colors[floor(random(colors.length))];
+      }
+
+      function draw() {
+        background(220);
+        vol = mic.getLevel();
+        volLog.push(vol);
+        noFill();
+        for(n = 0; n < windowHeight; n += windowHeight/40) {
+          beginShape();
+          curveVertex(0,n);
+          for (i = 0; i < windowWidth; i++) {
+            if (volLog[i] > 0.005) {
+              stroke(color1);
+            } else {
+              stroke(color2);
+            }
+            var d = dist(i,n,windowWidth/2,n);
+            curveVertex(i, n - noise(n + i*(0.01)*volLog[i])*(windowWidth/2-d));
+          }
+        endShape();
+        curveVertex(windowWidth,n)
+        curveVertex(windowWidth,n)
+        }
+        if (volLog.length > windowWidth) {
+        volLog.splice(0,1);
+        }
+      }
+    </script>
+  </head>
+</html>

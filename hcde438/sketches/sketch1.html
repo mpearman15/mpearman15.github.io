@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sun Static</title>
+    <style>
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+      }
+      canvas {
+        display: block;
+      }
+  </style>
+    <meta charset="UTF-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+    <script>
+      let sunDiameter = 200;
+      let numCircles = 12;
+      let angle;
+      let cX;
+      let cY;
+
+      function setup() {
+        createCanvas(windowWidth, windowHeight);
+      }
+
+      function draw() {
+        background(173, 232, 244);
+        sunrays();
+        sun();
+        hills();
+        waves();
+      }
+
+      function sun() {
+        fill(255, 153, 0);
+        stroke('white');
+        strokeWeight(6);
+        ellipse(0,0,sunDiameter);
+      }
+
+      function sunrays() {
+        cX = windowWidth/4;
+        cY = windowHeight/4;
+        translate(cX, cY);
+        let angle = TAU/numCircles;
+        for (let i = 0; i < numCircles; i++) {
+          stroke('white');
+          strokeWeight(6);
+          if (i%2==0) {
+            fill(253, 197, 0);
+          } else {
+            fill (255, 214, 10);
+          }
+          push();
+          rotate(i * angle);
+          translate(0, -(windowHeight/1.6));
+          ellipse(0,0,100, windowHeight+sunDiameter);
+          pop();
+        }
+      }
+
+      function hills() {
+        translate(-cX, -cY);
+        stroke('white');
+        strokeWeight(6);
+
+        // hill1
+        fill(96,108,56);
+        beginShape();
+        vertex(0,windowHeight);
+        bezierVertex(500, 50, 500, 600, windowWidth,windowHeight);
+        endShape();
+
+        // hill2
+        fill(113, 131, 85);
+        beginShape();
+        vertex(0,windowHeight);
+        bezierVertex(0, 20, 300, 800, windowWidth,windowHeight);
+        endShape();
+      }
+
+      function waves() {
+        // wave1
+        fill(33, 158, 188);
+        beginShape();
+        vertex(0,windowHeight);
+        bezierVertex(600, 500,1000,200, windowWidth,windowHeight);
+        endShape();
+
+        // wave2
+        fill(72, 202, 228);
+        beginShape();
+        vertex(0,windowHeight);
+        bezierVertex(600, 500,1000,500, windowWidth,windowHeight);
+        endShape();
+      }
+
+      function windowResized() {
+        // Resize the canvas whenever the window is resized
+        resizeCanvas(windowWidth, windowHeight);
+      }
+    </script>
+  </head>
+</html>

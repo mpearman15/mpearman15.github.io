@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <title>Starry Night</title>
+    <style>
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+    <script>
+      let stars = [];
+
+      function setup() {
+        createCanvas(windowWidth, windowHeight);
+        for (let i = 0; i < 500; i++) {
+          stars[i] = new StarTwinkle();
+        }
+      }
+
+      function draw() {
+        background(30);
+        for (let i = 0; i < stars.length; i++) {
+          stars[i].draw();
+        }
+        hills();
+        waves();
+      }
+
+      class StarTwinkle {
+        constructor() {
+          this.x = random(windowWidth);
+          this.y = random(windowHeight);
+          this.size = random(1, 4);
+          this.t = random(PI);
+        }
+
+        draw() {
+          this.t += 0.1;
+          var scale = this.size + sin(this.t) * 2;
+          noStroke();
+          fill('white');
+          ellipse(this.x, this.y, scale, scale);
+        }
+      }
+
+      function hills() {
+        stroke('white');
+        strokeWeight(6);
+        // hill1
+        fill(96,108,56);
+        beginShape();
+        vertex(0,windowHeight);
+        bezierVertex(500, 50, 500, 600, windowWidth,windowHeight);
+        endShape();
+        // hill2
+        fill(113, 131, 85);
+        beginShape();
+        vertex(0,windowHeight);
+        bezierVertex(0, 20, 300, 800, windowWidth,windowHeight);
+        endShape();
+      }
+
+      function waves() {
+        // wave1
+        fill(33, 158, 188);
+        beginShape();
+        vertex(0,windowHeight);
+        bezierVertex(600, 500,2000,1000, windowWidth,windowHeight);
+        endShape();
+        // wave2
+        fill(72, 202, 228);
+        beginShape();
+        vertex(0,windowHeight);
+        bezierVertex(600, 500,2000,1500, windowWidth,windowHeight);
+        endShape();
+      }
+
+      function windowResized() {
+        // Resize the canvas whenever the window is resized
+        resizeCanvas(windowWidth, windowHeight);
+      }
+    </script>
+  </head>
+</html>
