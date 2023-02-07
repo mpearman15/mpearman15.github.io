@@ -30,15 +30,18 @@
       }
 
       function draw() {
-        background(220);
+        background("#fbfefb");
         vol = mic.getLevel();
         volLog.push(vol);
         noFill();
+
         for(n = 0; n < windowHeight; n += windowHeight/40) {
           beginShape();
+          stroke(10);
           curveVertex(0,n);
+
           for (i = 0; i < windowWidth; i++) {
-            if (volLog[i] > 0.005) {
+            if (volLog[i] > 0.01) {
               stroke(color1);
             } else {
               stroke(color2);
