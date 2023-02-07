@@ -10,6 +10,7 @@
       }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
     <script>
       let sunDiameter = 200;
       let numCircles = 12;
@@ -26,9 +27,7 @@
         cX = windowWidth/4;
         cY = windowHeight/4;
         soundFormats('mp3', 'wav');
-        // waveSound = loadSound('assets/waves.wav');
         sunSound = loadSound("assets/birdchirp.mp3", sun);
-        // grassSound = loadSound('assets/grass.wav');
       }
 
       function draw() {
@@ -119,6 +118,12 @@
       function windowResized() {
         // Resize the canvas whenever the window is resized
         resizeCanvas(windowWidth, windowHeight);
+      }
+
+      function touchStarted() {
+        if (getAudioContext().state !== 'running') {
+          getAudioContext().resume();
+        }
       }
     </script>
   </head>
