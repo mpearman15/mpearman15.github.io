@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="stylesheet" href="/index.css" />
+    <title>MP-3 Write Up: Dev Toolchain</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="header">
+      <a href="./index.html"> writeups!</a>
+      <a href="../cheatsheet.html"> cheatsheet!</a>
+      <a href="/about.html"> about me!</a>
+      <a href="/index.html"> home! </a>
+    </div>
+    <div class="page-container">
+      <h1>MP-3 Write Up: Dev Toolchain</h1>
+      <h2>Overview</h2>
+      <p>For this assignment, we were tasked with practicing developing an app using modern development tools. For this assignment, I decided to work on a game and publishing it through a dev toolchain.
+        <br>
+      </p>
+      <h2>Process & Issues</h2>
+
+      <p> Setting up everything was really easy because I just followed the dev tutorial. I decided that I wanted to create a side-scrolling game and followed <a href="https://workshops.hackclub.com/platformer">this tutorial</a>.
+        My first issue came with getting the side to scroll. The ground boxes I created would all just slowly disappear without scrolling.
+        To solve this, I discovered from Hannah that the issue was a version issue, and that I had to just get rid of the drawSprites() at the end of the screen.
+         </p>
+        <br><img
+        class="picture"
+        src="../mp/mp3/photos/issue1.gif"
+        />
+        <br>
+      <p> However, this wasn't the end of the issue, because I realized that even though it would scroll, nothing would appear at the end of it.
+        When I added in console.logs before and after each ground sprite's remove() and add() methods, I saw that they were indeed shifting. Therefore,
+        I realized that the sprites were shifting, but simply not showing up. By asking Hannah, I was able to realize that this problem was a result of a weird
+        bug where the camera position was not updating properly. Instead of using camera.position.x, I changed it to camera.x. </p>
+        <br><img
+        class="picture"
+        src="../mp/mp3/photos/issue2.gif"
+        />
+        <br>
+       <p>Next up, I worked on getting the obstacles set up. My main issue here was getting the obstacles and the sprite to collide and then end the game.
+        I was confused why this was happening, but after looking at the discord, I saw that YanFu had a similar problem. His problem helped me realize that it was
+        because I had to cycle through the different obstacles themselves, not just the group to check to see if there was an overlap.
+        I'm not sure if this was an issue that should have happened, but I'm glad that Yanfu's work was able to show me that there was a way to solve it.
+        </p>
+        <br>
+        <p> I also had a problem figuring out how to get the mousePressed function to work. I made a separate function, but it wasn't getting any response. I ended up using
+          the mouseIsPressed as an if statement, but placing it at the top of the draw as a way to reset the game. Finally, this helped it all to work out.
+        </p>
+        <br><img
+        class="picture"
+        src="../mp/mp3/photos/final.gif"
+        />
+        <br>
+      <br>
+    </div>
+  </body>
+</html>
