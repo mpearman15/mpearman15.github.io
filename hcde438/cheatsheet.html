@@ -25,6 +25,52 @@
           transition: all 0.5s ease-out;
         }
       </pre>
+      <h2> Javascript Snippets </h2>
+      <p> This is to change the background color of a text when you hover over it</p>
+      <pre>
+        .image-title:hover {
+          background-color: #a3b18a;
+          color: #F8F6E7;
+          border-radius: 4px;
+          transition: all 0.5s ease-out;
+        }
+      </pre>
+      <h2> p5.js Snippets </h2>
+      <p> I used this code to make something rotate - in this case, it was for the sunrays of a sun.
+        I learned how to use the rotate() and translate() functions to do this, as well as the push and pop functions!
+      </p>
+      <pre>
+        function sunrays() {
+          cX = windowWidth/4;
+          cY = windowHeight/4;
+          translate(cX, cY);
+          let angle = TAU/numCircles;
+          for (let i = 0; i < numCircles; i++) {
+            stroke('white');
+            strokeWeight(6);
+            if (i%2==0) {
+              fill(253, 197, 0);
+            } else {
+              fill (255, 214, 10);
+            }
+            push();
+            rotate(i * angle);
+            translate(0, -(windowHeight/1.6));
+            ellipse(0,0,100, windowHeight+sunDiameter);
+            pop();
+          }
+        }
+      </pre>
+      <h2> Javascript Snippets </h2>
+      <p> This is to change the background color of a text when you hover over it</p>
+      <pre>
+        .image-title:hover {
+          background-color: #a3b18a;
+          color: #F8F6E7;
+          border-radius: 4px;
+          transition: all 0.5s ease-out;
+        }
+      </pre>
     </div>
   </body>
 </html>
