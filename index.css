@@ -1,7 +1,7 @@
 body {
   background-color: #F8F6E7;
   font-family: 'Playfair Display', serif;
-  color: #588157;
+  color: #283618;
   text-align: left;
   margin-top: 0;
   margin-right: 0;
@@ -53,7 +53,7 @@ a:link {
 
 a:visited {
   text-decoration: none;
-  color: #588157;
+  color: #283618;
 }
 
 .header {
@@ -64,7 +64,7 @@ a:visited {
 
 .header a {
   float: right;
-  color: #588157;
+  color: #283618;
   text-align: center;
   padding: 12px;
   text-decoration: none;
