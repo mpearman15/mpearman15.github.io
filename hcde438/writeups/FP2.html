@@ -17,75 +17,67 @@
     <div class="page-container">
       <h1>Final Project</h1>
       <h2>Overview</h2>
-      <p> For the final project, I wanted to create a visualized diary entry site, that would have a garden visualization based on user's emotions and activities
-        throughout the day. However, for this prototype, I kept it very simple and only had functionality that demonstrated
-        what it would be like to click to add a new entry to the page, and then be able to click on the screen to "plant"
-        whatever entry they just entered in, and having the data they entered sent to firebase.
-      </p>
-      <h2>Project Scope</h2>
-      <p> After beginning to create my prototype, the scope changed a little. I had wanted to have a large variety of different graphics and animations
-        (leaves, colors, flower type, length), but now that I have started the project, I am realizing that I may not have the time to make so many different types,
-        or to correlate the graphics to a specific spot on the screen. Instead, I was thinking of just having different flowers appear on the page, and then
-        having the ability to hover over them to show what they said.
-      </p>
-      <h2>Time management</h2>
-      <p> Setting up and figuring out how to use firebase and connect all the components together took a lot longer than I expected. As a result,
-        I was not able to get all of the components that I had initially wanted for this prototype.
-      </p>
-      <h2>Implementation Plan</h2>
-      <p> I will definitely be starting as soon as possible for the final, and prioritize the main functionality over some of the other features.
-        Also, given the problems I have had using vite, P5.js, and firebase all together, I will need to deploy more often to be able to troubleshoot more often.
+      <p> For the final project, I I wanted to create a visualized diary entry site, that would be a garden visualization based on user's emotions and activities
+        throughout the day. After beginning to create my prototype, the scope changed a little. I had wanted to have a large variety of different graphics and animations
+        (leaves, colors, flower type, length), but now that I have started the project, I want to just create one type of graphic, a plant leaf, that would grow in size
+        each time a person added an entry.
       </p>
       <h2>Process</h2>
-      <p> The first thing I did was set up vite, and try to connect firebase to it. This was a challenge because it was a new platform and I had a hard time
-        understanding all of the different keywords and how to access different type of information.
-        After setting up firebase, I created very basic HTML, CSS, and Javascript functionality for the page. I made a button that leads to a popup screen that has different
-        diary entry options.
-        <br><img width="250"
-        src="../mp/fp1/photos/photo1.png"
+      <p> Picking up from where I had left off with the prototype, I started to try and create the visualization aspect of this project.
+        I went ahead and made a very simple flower and replaced the circles that I had made before with those.
+        <br><img
+        class="picture"
+        alt="a white background with simple green silhouette flowers scattered across the screen, with words on them"
+        src="../mp/fp2/photos/photo1.png"
         />
-        <br><img width="250"
-        src="../mp/fp1/photos/photo2.png"
-        />
-        Also, something else that was difficult was figuring out the format to take in information from the user. After talking to Hannah, I set up
-        an HTML form, put this information into an array, and then sent out this information to firestore. Thankfully through this process, it worked!
         <br>
-        However, this isn't where the challenges ended. Although I was able to send information over to firestore, I wasn't able to get that information
-          back to utilize in the HTML page that I created. I followed the tutorial that had a similar functionality of receiving all the entries posted, but didn't
-          receive anything. For this prototype, I decided to put this portion of the project on hold, and instead focus on what would happen next for the user after
-          any given entry.
-        <br> I did this by starting to incorporate p5.js. It was difficult because I didn't want the canvas to just start going off immediately, so I put the p5 code into
-        the function that is called whenever users create a new entry. I had to learn a new syntax format for this to work for me, but after I learned that it worked well.
-        <br> I decided to have users "plant" their entry by being able to place it somewhere on the screen by clicking onto a space whenever they submit an entry.
-        <br><img width="250"
-        src="../mp/fp1/photos/photo3.png"
+        It looked jumbled, like the circles did, and I didn't quite like the look of the flower.
+        I figured that I would just take the stem portion of this flower, and have each input start off as one little leaf.
+        I also made sure to change the y value each iteration but not the x value, so that it would
+        stay in the same place and give off the perception that the leaf was growing with each new entry. I used arbitrary values at this point.
+        <br><img
+        class="picture"
+        alt="a white background with a long stack of green leaves going up the middle"
+        src="../mp/fp2/photos/photo2.png"
         />
-        <br> I played around with this version for a while, but then Hannah helped me realize that I had one little portion of my code that was sending the data in the wrong format
-        to firebase. After I changed that, I was able to see all of the entries populate the page! At this point, the next thing to do was just to make each entry have a ellipse attached
-        to it. To do this, I decided to write the code that I had for a single entry into the function that received all of the entries. I was able
-        to get it in a working state after a bit of time, but struggled to make all of the entries appear right after an input. I figure it has something to do with
-        the fact that the view() function doesn't really call for all of the entries to be drawn, but I didn't have the time to figure that one out, so I'm leaving it for next time.
-        I also wanted to figure out how to get the entry information to only show up once someone had hovered over it, but didn't get the chance to figure that part out yet either.
-        <br><img width="250"
-        src="../mp/fp1/photos/photo4.png"
+        <br>
+        Next, I had to figure out how to separate out the whole month into even spaces, and placing a given day in the right space on the canvas. I did this by making use of the
+        different calls to time caught in my Date.now function in the database. I used these to get the month, so that I could create a calculation that would split up the canvas based
+        on the month ( March has 31 days and should be split evenly based on this).
+        <br><img
+        class="picture"
+        alt="a white background with words overlapping towards the middle of the screen, with March 16th written and entry information there"
+        src="../mp/fp2/photos/photo3.png"
         />
-      </p>
-      <h2>Moving Forward</h2>
-      <p> For the final project, I will also finalize whether I want the different
-        entries to be in a chronological format, or something placed randomly. I could see the benefit of doing either way! I will be figuring out
-        how to make the mouseover hovering feature work, and then how to update the page as soon as someone updates it. Finally, I will be adding more
-        questions into the entry pop-up, and then making the CSS pretty.
+        <br>
+        Next, I wanted to try and get the leaf guy that I had created to be created each time an entry was made.
+        <br><img
+        class="picture"
+        alt="a white background with words towards the middle bottom of the screen, with March 16th written and entry information there,
+        now with an addition of green leaves alternating next to it"
+        src="../mp/fp2/photos/photo5.png"
+        />
+        <br>
+        Finally, I got rid of the words because I wanted them to be revealed every time a mouse hovered over that spot. This was definitely the hardest portion to figure out of the whole thing.
+        It was difficult for me to figure out how to connect the entries to a mouseOver() event, and I couldn't figure out why it wasn't working. I tried lots of different variations of
+        a "mouseOver" function, but nothing seemed to work. In the end, I realized that a large portion of it was because I hadn't actually made a draw() function all this time, so I think that
+        the functions I was trying to use for P5.js functionality weren't working. At this point, using dist() was working and I was able to hover ovr a leaf for it to turn a different color.
+        <br><img
+        class="picture"
+        alt=" six alternating green leaves in the middle bottom of the screen, with the top leaf yellow"
+        src="../mp/fp2/photos/photo6.png"
+        />
+        <br>
       </p>
       <br>
       <h2>Kudos</h2>
-      <p> Kudos to Hannah for helping me!
+      <p> I used <a href="https://stackoverflow.com/questions/10211145/getting-current-date-and-time-in-javascript">this stackoverflow entry </a> to help me figure out time stuff.
       </p>
       <div>
-        <a href="https://mpearman15.github.io/gardenprototype">
+        <a href="https://mpearman15.github.io/gardenjournal">
           <div class="image-title">Link to the site!</div>
         </a>
       </div>
     </div>
-
   </body>
 </html>
