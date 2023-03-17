@@ -10,11 +10,8 @@ body {
 }
 
 .page-container {
-  display: flex;
-  flex-wrap: wrap;
   width: 60%;
   margin: auto;
-  gap: 100px;
 }
 
 .picture-container {
